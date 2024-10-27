@@ -13,12 +13,16 @@ bob.run()
 charlie.run()
 hospital.run()
 
-alice.distribute_shares('localhost', 5002, 'localhost', 5003)
-bob.distribute_shares('localhost', 5001, 'localhost', 5003)
-charlie.distribute_shares('localhost', 5001, 'localhost', 5002)
+host_info = ('localhost', 5001, 'localhost', 5002, 'localhost', 5003)
+
+alice.distribute_shares(*host_info)
+bob.distribute_shares(*host_info)
+charlie.distribute_shares(*host_info)
 
 time.sleep(1)
 print(f"Expected total amount of share Alice: {alice.secret}")
+print(f"Expected total amount of share Bob: {bob.secret}")
+print(f"Expected total amount of share Charlie: {charlie.secret}")
 
 while True:
     pass
