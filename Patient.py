@@ -32,6 +32,7 @@ class Patient:
         while True:
             new_socket, address = self.server_socket.accept()
             with self.server_context.wrap_socket(new_socket, server_side=True ) as ssl_socket:
+                #Receive the share
                 data = ssl_socket.recv(1024)
                 if data:
                     received_share = int(data.decode())
@@ -48,6 +49,7 @@ class Patient:
             with self.client_context.wrap_socket(sock, server_side=False, server_hostname='localhost') as ssock:
                 ssock.send(str(share).encode())
 
+    #Shares are split into 3 parts randomly
     def split_shares(self):
         self.secret_parts[0] = random.randint(1, self.secret)
         self.secret_parts[1] = random.randint(1, self.secret - self.secret_parts[0] - 1)

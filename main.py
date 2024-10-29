@@ -22,7 +22,6 @@ charlie.distribute_shares(*host_info)
 time.sleep(1)
 print(f"Expected total amount of share Alice: {alice.secret}")
 print(f"Expected total amount of share Bob: {bob.secret}")
-print(f"Expected total amount of share Charlie: {charlie.secret}")
 
 while True:
     pass
